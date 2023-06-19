@@ -9,10 +9,10 @@ class Network:
     def setLoss(self, loss, lossPrime):
         self.loss = loss
         self.lossPrime = lossPrime
+
     def predict(self, input):
         samples = len(input)
         result = []
-        ## For each input run the forward propagation
         for i in range(samples):
             output = input[i]
 
@@ -22,7 +22,7 @@ class Network:
 
         return result
     
-    def train(self,xTrain,yTrain,epochs,learning_rate):
+    def train(self,xTrain,yTrain,epochs,learningRate):
         samples = len(xTrain)
         for i in range(epochs):
             err = 0
@@ -33,7 +33,7 @@ class Network:
                 err += self.loss(yTrain[j],output)
                 error = self.lossPrime(yTrain[j],output)
                 for layer in reversed(self.layers):
-                    error = layer.backwardPropagation(error,learning_rate)
+                    error = layer.backwardPropagation(error,learningRate)
             err /= samples
             print('epoch %d/%d   error=%f' %(i+1,epochs,err))
     
