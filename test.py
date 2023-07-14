@@ -19,7 +19,7 @@ net.add(FullyConnectLayer(3,1))
 net.add(ActivationLayer(tanh, tanhPrime))
 
 net.setLoss(loss, lossPrime)
-net.train(Xtrain, Ytrain, 1000, learningRate=0.1)
+net.train(Xtrain, Ytrain, 1000, learningRate=0.2)
 
 out = net.predict(Xtrain)
 print(out)
