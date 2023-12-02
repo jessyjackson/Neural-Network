@@ -6,9 +6,9 @@ from activation import tanh, tanhPrime
 from losses import loss, lossPrime
 from keras.datasets import mnist
 from keras.utils import np_utils
-import pandas as pd
 
 (xTrain, yTrain), (xTest, yTest) = mnist.load_data()
+
 #from matrix to array 
 xTrain = xTrain.reshape(xTrain.shape[0], 1, 28*28).astype('float32')
 #from 0--255 to 0--1 for a better train

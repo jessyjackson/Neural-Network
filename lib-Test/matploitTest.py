@@ -1,18 +1,31 @@
 import matplotlib.pyplot as plt
-import numpy as np
-plt.style.use('_mpl-gallery')
+from keras.datasets import mnist
+from keras.utils import np_utils
 
-# make data:
-np.random.seed(3)
-x = 0.5 + np.arange()
-y = np.random.uniform(2, 7, len(x))
+(xTrain, yTrain), (xTest, yTest) = mnist.load_data()
 
-# plot
-fig, ax = plt.subplots()
+plt.figure()
+for i in range(1,10):
+    plt.subplot(3,3,i)
+    plt.imshow(xTrain[i],cmap=plt.get_cmap('gray'))
 
-ax.bar(x, y, width=1, edgecolor="white", linewidth=0.7)
 
-ax.set(xlim=(0, 8), xticks=np.arange(1, 8),
-       ylim=(0, 8), yticks=np.arange(1, 8))
 
+xTrain = xTrain.reshape(xTrain.shape[0], 1, 28*28).astype('float32')
+plt.figure()
+for i in range(1,10):
+    plt.subplot(3,3,i)
+    plt.imshow(xTrain[i],cmap=plt.get_cmap('gray'))
+xTrain = xTrain /255
+plt.figure()
+
+for i in range(1,10):
+    plt.subplot(3,3,i)
+    plt.imshow(xTrain[i],cmap=plt.get_cmap('gray'))
+
+for i in range(1,10):
+    print(yTrain[i])
+yTrain = np_utils.to_categorical(yTrain)
+for i in range(1,10):
+    print(yTrain[i])
 plt.show()
